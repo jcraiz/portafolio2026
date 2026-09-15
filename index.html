@@ -3,32 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portafolio · Diseño Instruccional · Juan Carlos Arcila Herrera</title>
+<title>Juan Carlos Arcila Herrera · Diseño instruccional y producción de e-learning</title>
+<meta name="description" content="Diseño instruccional, producción multimedia y empaquetado SCORM para instituciones militares, educativas y de salud en Colombia y México. También desarrollo de sitios web institucionales.">
+<meta name="author" content="Juan Carlos Arcila Herrera">
+<meta name="theme-color" content="#F1EEE4">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Juan Carlos Arcila Herrera · Diseño instruccional">
+<meta property="og:description" content="Cursos digitales de guion pedagógico a paquete SCORM, y sitios web institucionales. Colombia y México.">
+<meta property="og:locale" content="es_CO">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink: #14232B;
     --ink-soft: #33454E;
     --paper: #F1EEE4;
-    --paper-deep: #E8E3D3;
     --card: #FBF9F3;
     --line: #DBD5C4;
-    --muted: #6A6459;
+    --muted: #605A50;
     --teal: #1F6F63;
     --teal-ink: #163F38;
-    --teal-glow: rgba(31,111,99,0.18);
     --ochre: #C98A2B;
-    --ochre-ink: #7A5219;
-    --ochre-glow: rgba(201,138,43,0.20);
+    --ochre-ink: #6E4A16;
     --rose: #8B3A3A;
     --rose-ink: #582424;
-    --rose-glow: rgba(139,58,58,0.18);
-    --shadow-sm: 0 2px 6px rgba(20,35,43,0.06);
-    --shadow-md: 0 12px 28px -12px rgba(20,35,43,0.22);
-    --shadow-lg: 0 24px 60px -24px rgba(20,35,43,0.35);
-    --radius: 4px;
+    --slate: #35607A;
+    --slate-ink: #1D3849;
+    --nav-h: 66px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -40,550 +42,291 @@
     font-size:17px;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
   }
   h1,h2,h3{
     font-family:'Fraunces', serif;
     color:var(--ink);
     margin:0;
-    letter-spacing:-0.015em;
+    letter-spacing:-0.01em;
   }
   a{color:inherit;}
   img{max-width:100%;display:block;}
   .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+  @media (max-width:640px){ .wrap{padding:0 20px;} }
 
   /* focus visibility */
-  a:focus-visible, button:focus-visible{outline:3px solid var(--teal); outline-offset:3px; border-radius:2px;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--teal); outline-offset:3px; border-radius:2px;}
 
   @media (prefers-reduced-motion: reduce){
-    *{animation:none !important; transition:none !important;}
     html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
   }
 
-  /* ============ NAV ============ */
+  /* skip link */
+  .skip{
+    position:absolute; left:-9999px; top:0; z-index:100;
+    background:var(--ink); color:var(--paper); padding:12px 20px;
+    text-decoration:none; font-weight:600; font-size:0.9rem;
+  }
+  .skip:focus{left:16px; top:12px;}
+
+  .visually-hidden{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+  }
+
+  /* NAV */
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(241,238,228,0.85);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
+    background:rgba(241,238,228,0.94);
+    backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
-    transition:background .3s ease;
   }
   nav{
     display:flex; align-items:center; justify-content:space-between;
-    padding:16px 0;
+    gap:20px; min-height:var(--nav-h);
   }
   .brand{
-    display:flex; align-items:center; gap:10px;
-    font-family:'Fraunces', serif; font-weight:700; font-size:1.1rem;
-    text-decoration:none;
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.1rem;
+    text-decoration:none; line-height:1.2;
   }
-  .brand-dot{
-    width:12px; height:12px; border-radius:50%;
-    background:var(--teal);
-    box-shadow:0 0 0 4px var(--teal-glow);
-  }
-  .navlinks{display:flex; gap:26px; font-size:0.9rem; font-weight:500;}
+  .brand small{display:block; font-family:'Work Sans',sans-serif; font-size:0.72rem; font-weight:400; color:var(--muted); letter-spacing:0;}
+  .navlinks{display:flex; gap:26px; font-size:0.93rem; align-items:center;}
   .navlinks a{
     text-decoration:none; color:var(--ink-soft);
-    position:relative; padding:4px 0;
+    border-bottom:2px solid transparent; padding:4px 0;
   }
-  .navlinks a::after{
-    content:""; position:absolute; left:0; bottom:0; height:1.5px; width:0;
-    background:var(--teal); transition:width .25s ease;
-  }
-  .navlinks a:hover{color:var(--ink);}
-  .navlinks a:hover::after{width:100%;}
-  @media (max-width:760px){ .navlinks{display:none;} }
+  .navlinks a:hover{border-color:var(--teal); color:var(--ink);}
+  .navlinks a[aria-current="true"]{color:var(--ink); font-weight:600; border-color:var(--teal);}
 
-  /* ============ HERO ============ */
-  .hero{
-    position:relative;
-    padding:110px 0 84px;
-    overflow:hidden;
-    background:
-      radial-gradient(900px 500px at 100% 0%, rgba(31,111,99,0.10), transparent 60%),
-      radial-gradient(700px 400px at -10% 60%, rgba(201,138,43,0.10), transparent 60%);
+  .navtoggle{
+    display:none; background:none; border:1px solid var(--line);
+    padding:9px 14px; font:inherit; font-size:0.9rem; font-weight:500;
+    color:var(--ink); cursor:pointer; align-items:center; gap:9px; border-radius:3px;
   }
-  .hero::after{
-    content:""; position:absolute; inset:0;
-    background-image:
-      linear-gradient(rgba(20,35,43,0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(20,35,43,0.045) 1px, transparent 1px);
-    background-size:56px 56px;
-    mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
-    -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
-    pointer-events:none;
+  .navtoggle .bars{display:block; width:17px; height:11px; position:relative;}
+  .navtoggle .bars::before, .navtoggle .bars::after, .navtoggle .bars span{
+    content:""; position:absolute; left:0; right:0; height:1.8px; background:var(--ink); transition:transform .2s ease, opacity .2s ease;
   }
-  .hero .wrap{position:relative; z-index:1;}
-  .eyebrow{
-    display:inline-flex; align-items:center; gap:10px;
-    color:var(--teal-ink); font-weight:600; font-size:0.85rem;
-    margin-bottom:22px;
-    padding:7px 15px;
-    background:rgba(31,111,99,0.10);
-    border:1px solid rgba(31,111,99,0.22);
-    border-radius:30px;
-    letter-spacing:0.02em;
-    text-transform:uppercase;
+  .navtoggle .bars::before{top:0;}
+  .navtoggle .bars span{top:4.6px;}
+  .navtoggle .bars::after{bottom:0;}
+  .navtoggle[aria-expanded="true"] .bars::before{transform:translateY(4.6px) rotate(45deg);}
+  .navtoggle[aria-expanded="true"] .bars span{opacity:0;}
+  .navtoggle[aria-expanded="true"] .bars::after{transform:translateY(-4.6px) rotate(-45deg);}
+
+  @media (max-width:860px){
+    .navtoggle{display:inline-flex;}
+    .navlinks{
+      display:none; position:absolute; left:0; right:0; top:100%;
+      flex-direction:column; align-items:stretch; gap:0;
+      background:var(--paper); border-bottom:1px solid var(--line);
+      padding:6px 20px 16px; font-size:1rem;
+    }
+    .navlinks.open{display:flex;}
+    .navlinks a{padding:13px 0; border-bottom:1px solid var(--line); border-top:none;}
+    .navlinks a:last-child{border-bottom:none;}
+    .navlinks a:hover, .navlinks a[aria-current="true"]{border-color:var(--line); color:var(--teal-ink);}
   }
-  .eyebrow .pulse{
-    width:7px; height:7px; border-radius:50%; background:var(--teal);
-    animation:pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse{
-    0%,100%{opacity:1; transform:scale(1);}
-    50%{opacity:0.5; transform:scale(0.75);}
+
+  /* HERO */
+  .hero{padding:92px 0 68px;}
+  .hero .eyebrow{
+    color:var(--teal-ink); font-weight:600; font-size:0.95rem; margin-bottom:18px;
   }
   .hero h1{
-    font-size:clamp(2.4rem, 5.6vw, 4.1rem);
+    font-size:clamp(2.2rem, 5vw, 3.6rem);
     font-weight:600;
-    max-width:15ch;
-    line-height:1.03;
-    letter-spacing:-0.025em;
-  }
-  .hero h1 em{
-    font-style:italic;
-    color:var(--teal-ink);
-    position:relative;
-    white-space:nowrap;
-  }
-  .hero h1 em::after{
-    content:""; position:absolute; left:0; right:0; bottom:0.06em; height:0.28em;
-    background:var(--ochre);
-    opacity:0.35; z-index:-1; border-radius:2px;
+    max-width:14ch;
+    line-height:1.08;
   }
   .hero p.lead{
-    max-width:54ch; margin-top:26px; font-size:1.15rem; color:var(--ink-soft);
+    max-width:52ch; margin-top:24px; font-size:1.13rem; color:var(--ink-soft);
   }
-  .hero-cta{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
-  .btn-primary{
-    display:inline-flex; align-items:center; gap:10px;
-    padding:14px 26px;
-    background:var(--ink); color:var(--paper);
-    text-decoration:none; font-size:0.95rem; font-weight:600;
-    border:1px solid var(--ink);
-    border-radius:var(--radius);
-    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
-    box-shadow:var(--shadow-md);
-  }
-  .btn-primary:hover{
-    transform:translateY(-2px);
-    box-shadow:var(--shadow-lg);
-    background:var(--teal-ink);
-    border-color:var(--teal-ink);
-  }
-  .btn-primary svg{transition:transform .25s ease;}
-  .btn-primary:hover svg{transform:translateX(4px);}
-  .btn-ghost{
-    display:inline-flex; align-items:center; gap:10px;
-    padding:14px 24px;
-    background:transparent; color:var(--ink);
-    text-decoration:none; font-size:0.95rem; font-weight:600;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    transition:border-color .2s ease, background .2s ease;
-  }
-  .btn-ghost:hover{border-color:var(--ink); background:rgba(20,35,43,0.04);}
-
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-top:30px;}
   .stats{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:0;
-    margin-top:60px;
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
+    display:flex; gap:44px; margin-top:48px; flex-wrap:wrap;
+    border-top:1px solid var(--line); padding-top:28px;
   }
-  .stat{
-    padding:26px 22px;
-    border-right:1px solid var(--line);
-    position:relative;
-  }
-  .stat:last-child{border-right:none;}
-  .stat b{
-    font-family:'Fraunces', serif;
-    font-size:2.4rem; font-weight:600; display:block;
-    line-height:1; margin-bottom:6px;
-    color:var(--ink);
-    letter-spacing:-0.03em;
-  }
-  .stat b .unit{font-size:1.3rem; color:var(--teal-ink); margin-left:2px;}
-  .stat span{font-size:0.85rem; color:var(--muted); line-height:1.4; display:block;}
-  @media (max-width:760px){
-    .stats{grid-template-columns:repeat(2,1fr);}
-    .stat:nth-child(2){border-right:none;}
-    .stat:nth-child(1), .stat:nth-child(2){border-bottom:1px solid var(--line);}
+  .stat b{font-family:'Fraunces', serif; font-size:2rem; font-weight:600; display:block; line-height:1.1;}
+  .stat span{font-size:0.9rem; color:var(--muted); display:block; max-width:22ch;}
+  @media (max-width:640px){
+    .hero{padding:56px 0 48px;}
+    .stats{gap:26px 32px;}
+    .stat b{font-size:1.6rem;}
   }
 
-  /* ============ SECTIONS ============ */
-  .section{padding:84px 0; position:relative;}
+  /* SECTION HEADS */
+  .section{padding:64px 0; scroll-margin-top:calc(var(--nav-h) + 16px);}
   .section-head{
     display:flex; justify-content:space-between; align-items:flex-end;
-    gap:24px; margin-bottom:44px; padding-bottom:22px;
-    border-bottom:1px solid var(--line);
+    gap:24px; margin-bottom:36px; border-bottom:1px solid var(--line); padding-bottom:20px;
   }
-  .section-head h2{
-    font-size:clamp(1.6rem, 2.5vw, 2.05rem);
-    font-weight:600;
-    line-height:1.1;
-  }
+  .section-head h2{font-size:1.7rem; font-weight:600;}
   .section-head p{color:var(--muted); max-width:44ch; font-size:0.95rem; margin:8px 0 0;}
-  .section-num{
-    display:block;
-    font-family:'Fraunces', serif;
-    font-size:0.85rem;
-    color:var(--teal-ink);
-    font-weight:600;
-    letter-spacing:0.15em;
-    margin-bottom:6px;
+  @media (max-width:760px){
+    .section{padding:48px 0;}
+    .section-head{flex-direction:column; align-items:flex-start; gap:14px;}
   }
   .tag{
-    font-size:0.78rem; font-weight:600; padding:7px 14px; border-radius:24px;
-    white-space:nowrap; height:fit-content; letter-spacing:0.01em;
+    font-size:0.82rem; font-weight:600; padding:6px 13px; border-radius:20px;
+    height:fit-content; line-height:1.4;
   }
-  .tag.teal{background:rgba(31,111,99,0.12); color:var(--teal-ink); border:1px solid rgba(31,111,99,0.22);}
-  .tag.ochre{background:rgba(201,138,43,0.14); color:var(--ochre-ink); border:1px solid rgba(201,138,43,0.28);}
-  .tag.rose{background:rgba(139,58,58,0.13); color:var(--rose-ink); border:1px solid rgba(139,58,58,0.25);}
-  @media (max-width:700px){
-    .section-head{flex-direction:column; align-items:flex-start; gap:16px;}
-  }
+  .tag.teal{background:rgba(31,111,99,0.12); color:var(--teal-ink);}
+  .tag.ochre{background:rgba(201,138,43,0.16); color:var(--ochre-ink);}
+  .tag.rose{background:rgba(139,58,58,0.13); color:var(--rose-ink);}
+  .tag.slate{background:rgba(53,96,122,0.13); color:var(--slate-ink);}
 
-  /* ============ FEATURED CARD ============ */
+  /* FEATURED CARD */
   .featured{
-    display:grid; grid-template-columns:1.1fr 0.9fr;
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    margin-bottom:8px;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:0;
+    background:var(--card); border:1px solid var(--line);
     position:relative; overflow:hidden;
-    box-shadow:var(--shadow-md);
-    transition:box-shadow .3s ease, transform .3s ease;
   }
-  .featured:hover{box-shadow:var(--shadow-lg); transform:translateY(-2px);}
   .featured::before{
-    content:""; position:absolute; left:0; top:0; bottom:0; width:6px;
-    background:linear-gradient(180deg, var(--teal), var(--teal-ink));
-    z-index:2;
+    content:""; position:absolute; left:0; top:0; bottom:0; width:6px; background:var(--teal); z-index:1;
   }
-  .featured-text{padding:48px 52px; position:relative;}
+  .featured.slate::before{background:var(--slate);}
+  .featured.rose::before{background:var(--rose);}
+  .featured-text{padding:44px 48px;}
   .featured-visual{
-    background:
-      radial-gradient(circle at 30% 30%, rgba(241,238,228,0.08), transparent 60%),
-      var(--teal-ink);
-    display:flex; align-items:center; justify-content:center; padding:36px;
-    position:relative; overflow:hidden;
+    background:var(--teal-ink); display:flex; align-items:center; justify-content:center; padding:36px;
   }
-  .featured-visual::before{
-    content:""; position:absolute; inset:-30%;
-    background-image:radial-gradient(circle, rgba(241,238,228,0.09) 1px, transparent 1px);
-    background-size:26px 26px;
-    animation:drift 30s linear infinite;
-    opacity:0.7;
-  }
-  @keyframes drift{
-    from{transform:translate(0,0);}
-    to{transform:translate(26px,26px);}
-  }
-  .featured-visual svg{position:relative; z-index:1; filter:drop-shadow(0 6px 14px rgba(0,0,0,0.25));}
-  .featured-kicker{
-    display:inline-block;
-    font-size:0.78rem; color:var(--teal-ink); font-weight:700;
-    margin-bottom:14px;
-    text-transform:uppercase; letter-spacing:0.12em;
-    padding:5px 12px; background:rgba(31,111,99,0.10);
-    border-radius:20px;
-  }
-  .featured h3{font-size:clamp(1.4rem,2.4vw,1.75rem); font-weight:600; margin-bottom:14px; line-height:1.15;}
-  .featured-desc{color:var(--ink-soft); font-size:1rem; margin-bottom:22px;}
-  .role-list{list-style:none; padding:0; margin:0 0 28px; font-size:0.92rem; color:var(--ink-soft);}
-  .role-list li{padding-left:20px; position:relative; margin-bottom:7px;}
-  .role-list li::before{
-    content:""; position:absolute; left:0; top:0.55em;
-    width:10px; height:1.5px; background:var(--teal);
-  }
-  .btn{
-    display:inline-flex; align-items:center; gap:10px;
-    padding:13px 24px;
-    background:var(--ink); color:var(--paper);
-    text-decoration:none; font-size:0.92rem; font-weight:600;
-    border:1px solid var(--ink); border-radius:var(--radius);
-    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
-    box-shadow:var(--shadow-sm);
-  }
-  .btn:hover{
-    transform:translateY(-2px);
-    box-shadow:var(--shadow-md);
-    background:var(--teal-ink); border-color:var(--teal-ink);
-  }
+  .featured-kicker{font-size:0.85rem; color:var(--teal-ink); font-weight:600; margin-bottom:10px;}
+  .featured h3{font-size:1.6rem; font-weight:600; margin-bottom:12px; line-height:1.25;}
+  .featured-desc{color:var(--ink-soft); font-size:1rem; margin:0 0 20px; max-width:56ch;}
+  .role-list{list-style:none; padding:0; margin:0 0 26px; font-size:0.92rem; color:var(--ink-soft);}
+  .role-list li{padding-left:18px; position:relative; margin-bottom:7px;}
+  .role-list li::before{content:"—"; position:absolute; left:0; color:var(--teal);}
+  .featured.slate .role-list li::before{color:var(--slate);}
+  .featured.rose .role-list li::before{color:var(--rose);}
+  .featured-actions{display:flex; gap:12px; flex-wrap:wrap; align-items:center;}
   @media (max-width:860px){
-    .featured{grid-template-columns:1fr;}
-    .featured-visual{padding:36px; min-height:200px; order:-1;}
-    .featured-text{padding:36px 30px;}
+    .featured{grid-template-columns:1fr !important;}
+    .featured-text{padding:32px 26px;}
+    .featured-visual{padding:28px; min-height:150px; order:-1;}
   }
 
-  /* ============ GRID CARDS ============ */
-  .grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:22px;}
-  @media (max-width:920px){ .grid{grid-template-columns:repeat(2,1fr);} }
+  /* BUTTONS */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; background:var(--ink); color:var(--paper);
+    text-decoration:none; font-size:0.92rem; font-weight:500; border:1px solid var(--ink);
+    transition:background .15s ease, color .15s ease;
+  }
+  .btn:hover{background:transparent; color:var(--ink);}
+  .btn.ghost{background:transparent; color:var(--ink); border-color:var(--line);}
+  .btn.ghost:hover{border-color:var(--ink); background:var(--card);}
+  .ext{width:11px; height:11px; flex:none; opacity:0.75;}
+
+  /* GRID CARDS */
+  .grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:22px;
+    list-style:none; padding:0; margin:0;
+  }
+  @media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:600px){ .grid{grid-template-columns:1fr;} }
 
   .card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
+    background:var(--card); border:1px solid var(--line);
     display:flex; flex-direction:column;
-    position:relative; overflow:hidden;
-    box-shadow:var(--shadow-sm);
-    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    position:relative;
+    transition:border-color .15s ease, transform .15s ease, box-shadow .15s ease;
   }
-  .card:hover{
-    transform:translateY(-5px);
-    box-shadow:var(--shadow-lg);
-    border-color:rgba(20,35,43,0.15);
-  }
-  .card .accent-bar{
-    height:5px; width:100%;
-    transition:height .3s ease;
-  }
-  .card:hover .accent-bar{height:7px;}
-  .card.teal .accent-bar{background:linear-gradient(90deg, var(--teal), var(--teal-ink));}
-  .card.ochre .accent-bar{background:linear-gradient(90deg, var(--ochre), var(--ochre-ink));}
-  .card.rose .accent-bar{background:linear-gradient(90deg, var(--rose), var(--rose-ink));}
-  .card-icon{
-    padding:28px 26px 0;
-    display:flex; align-items:center;
-  }
-  .card-icon .icon-wrap{
-    width:54px; height:54px; border-radius:12px;
-    display:flex; align-items:center; justify-content:center;
-    background:rgba(20,35,43,0.04);
-    transition:transform .3s ease, background .3s ease;
-  }
-  .card:hover .icon-wrap{transform:scale(1.08) rotate(-3deg);}
-  .card.teal .icon-wrap{background:rgba(31,111,99,0.09);}
-  .card.ochre .icon-wrap{background:rgba(201,138,43,0.12);}
-  .card.rose .icon-wrap{background:rgba(139,58,58,0.10);}
-  .card-body{padding:18px 26px 26px; display:flex; flex-direction:column; gap:10px; flex:1;}
-  .card-body h3{font-size:1.15rem; font-weight:600; line-height:1.3;}
-  .card-body p{font-size:0.92rem; color:var(--ink-soft); margin:0; flex:1;}
-  .card-role{
-    font-size:0.8rem; color:var(--muted);
-    padding-top:8px; border-top:1px dashed var(--line);
-    margin-top:4px;
-  }
+  .card:hover{border-color:#BFB7A1; transform:translateY(-2px); box-shadow:0 6px 18px rgba(20,35,43,0.07);}
+  .card:focus-within{border-color:var(--teal);}
+  .card .accent-bar{height:5px; width:100%;}
+  .card.teal .accent-bar{background:var(--teal);}
+  .card.ochre .accent-bar{background:var(--ochre);}
+  .card.rose .accent-bar{background:var(--rose);}
+  .card-icon{padding:26px 26px 0;}
+  .card-body{padding:16px 26px 26px; display:flex; flex-direction:column; gap:10px; flex:1;}
+  .card-body h3{font-size:1.1rem; font-weight:600; line-height:1.3;}
+  .card-body p{font-size:0.92rem; color:var(--ink-soft); margin:0;}
+  .card-body p.desc{flex:1;}
+  .card-role{font-size:0.82rem; color:var(--muted);}
   .card-link{
     font-size:0.9rem; font-weight:600; text-decoration:none; margin-top:6px;
-    display:inline-flex; align-items:center; gap:6px; width:fit-content;
-    border-bottom:1px solid currentColor; padding-bottom:1px;
-    transition:gap .2s ease;
+    display:inline-flex; align-items:center; gap:7px; width:fit-content;
+    border-bottom:1px solid currentColor;
   }
-  .card-link:hover{gap:11px;}
+  /* whole card is clickable, link stays the accessible target */
+  .card-link::after{content:""; position:absolute; inset:0;}
   .card.teal .card-link{color:var(--teal-ink);}
   .card.ochre .card-link{color:var(--ochre-ink);}
   .card.rose .card-link{color:var(--rose-ink);}
 
-  /* ============ SECTORS STRIP ============ */
-  .strip{
-    background:var(--paper-deep);
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-    padding:22px 0;
-    overflow:hidden;
-    position:relative;
+  /* FEATURE LIST (site capabilities) */
+  .feature-list{
+    list-style:none; padding:0; margin:26px 0 0;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
   }
-  .strip-track{
-    display:flex; gap:56px;
-    animation:scroll 32s linear infinite;
-    width:max-content;
-  }
-  @keyframes scroll{
-    from{transform:translateX(0);}
-    to{transform:translateX(-50%);}
-  }
-  .strip-item{
-    display:flex; align-items:center; gap:12px;
-    font-family:'Fraunces', serif;
-    font-size:1rem; font-weight:500;
-    color:var(--ink-soft);
-    white-space:nowrap;
-    opacity:0.85;
-  }
-  .strip-item .dot{width:8px; height:8px; border-radius:50%;}
-  .strip-item.t .dot{background:var(--teal);}
-  .strip-item.o .dot{background:var(--ochre);}
-  .strip-item.r .dot{background:var(--rose);}
+  @media (max-width:820px){ .feature-list{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .feature-list{grid-template-columns:1fr;} }
+  .feature-list li{background:var(--card); padding:20px 22px;}
+  .feature-list b{display:block; font-size:0.95rem; font-weight:600; margin-bottom:5px;}
+  .feature-list span{font-size:0.87rem; color:var(--muted); line-height:1.5;}
 
-  /* ============ SKILLS ============ */
+  /* SKILLS */
   .skills-wrap{
-    background:
-      radial-gradient(700px 400px at 85% 10%, rgba(31,111,99,0.30), transparent 60%),
-      radial-gradient(500px 300px at 10% 90%, rgba(201,138,43,0.18), transparent 60%),
-      var(--ink);
-    color:var(--paper);
-    padding:90px 0;
-    position:relative;
-    overflow:hidden;
+    background:var(--ink); color:var(--paper); padding:64px 0;
+    scroll-margin-top:calc(var(--nav-h) + 16px);
   }
-  .skills-wrap::before{
-    content:""; position:absolute; inset:0;
-    background-image:
-      linear-gradient(rgba(241,238,228,0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(241,238,228,0.035) 1px, transparent 1px);
-    background-size:48px 48px;
-    pointer-events:none;
-  }
-  .skills-wrap .wrap{position:relative; z-index:1;}
-  .skills-wrap h2{color:var(--paper); font-size:clamp(1.7rem,2.8vw,2.2rem); margin-bottom:10px;}
-  .skills-wrap p.lead2{color:#C7CBC2; max-width:56ch; margin-bottom:44px; font-size:1.02rem;}
-  .pill-grid{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:56px;}
+  .skills-wrap h2{color:var(--paper); font-size:1.7rem; margin-bottom:8px;}
+  .skills-wrap p.lead2{color:#CBD0C7; max-width:52ch; margin:0 0 36px;}
+  .pill-grid{display:flex; flex-wrap:wrap; gap:12px; list-style:none; padding:0; margin:0;}
   .pill{
-    border:1px solid rgba(241,238,228,0.22);
-    padding:11px 20px; font-size:0.9rem;
-    color:var(--paper); border-radius:30px;
-    background:rgba(241,238,228,0.04);
-    transition:transform .2s ease, background .2s ease, border-color .2s ease;
-    cursor:default;
-  }
-  .pill:hover{
-    transform:translateY(-3px);
-    background:rgba(241,238,228,0.10);
-    border-color:rgba(241,238,228,0.45);
+    border:1px solid rgba(241,238,228,0.30); padding:10px 18px; font-size:0.92rem;
+    color:var(--paper); border-radius:24px;
   }
 
-  .process{
-    display:grid; grid-template-columns:repeat(4, 1fr); gap:22px;
-    border-top:1px solid rgba(241,238,228,0.18);
-    padding-top:44px;
+  /* FOOTER */
+  footer{padding:56px 0 64px; border-top:1px solid var(--line); scroll-margin-top:var(--nav-h);}
+  .foot-grid{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:32px;}
+  footer h2{font-size:1.5rem; margin-bottom:12px; max-width:18ch;}
+  footer p{color:var(--muted); font-size:0.95rem; max-width:46ch; margin:0 0 4px;}
+  .foot-links{display:flex; flex-direction:column; gap:12px; align-items:flex-start;}
+  .foot-links a{
+    text-decoration:none; font-weight:600; color:var(--teal-ink);
+    border-bottom:1px solid var(--teal); display:inline-flex; align-items:center; gap:8px;
   }
-  @media (max-width:860px){ .process{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:520px){ .process{grid-template-columns:1fr;} }
-  .step{position:relative;}
-  .step .num{
-    font-family:'Fraunces', serif;
-    font-size:2rem; font-weight:600;
-    color:var(--ochre);
-    line-height:1; margin-bottom:12px;
-    display:block;
-  }
-  .step h4{
-    font-family:'Work Sans', sans-serif;
-    font-size:1rem; font-weight:600;
-    color:var(--paper); margin:0 0 8px;
-    letter-spacing:0;
-  }
-  .step p{font-size:0.88rem; color:#B7BCB3; margin:0; line-height:1.55;}
+  .foot-links a:hover{color:var(--ink); border-color:var(--ink);}
+  .copyright{margin-top:44px; font-size:0.82rem; color:var(--muted);}
 
-  /* ============ FOOTER / CTA ============ */
-  footer{
-    background:var(--ink);
-    color:var(--paper);
-    padding:0;
-    position:relative;
-    overflow:hidden;
+  /* BACK TO TOP */
+  .to-top{
+    position:fixed; right:22px; bottom:22px; z-index:40;
+    width:44px; height:44px; border-radius:50%;
+    background:var(--ink); color:var(--paper); border:none; cursor:pointer;
+    display:grid; place-items:center;
+    opacity:0; visibility:hidden; transform:translateY(8px);
+    transition:opacity .2s ease, transform .2s ease, visibility .2s;
   }
-  .cta{
-    padding:90px 0 70px;
-    position:relative;
-    z-index:1;
-  }
-  .cta::before{
-    content:""; position:absolute; top:-40%; right:-10%;
-    width:520px; height:520px; border-radius:50%;
-    background:radial-gradient(circle, rgba(201,138,43,0.22), transparent 65%);
-    pointer-events:none;
-  }
-  .cta-grid{
-    display:grid; grid-template-columns:1.2fr 1fr; gap:56px; align-items:center;
-    position:relative; z-index:1;
-  }
-  @media (max-width:820px){ .cta-grid{grid-template-columns:1fr; gap:36px;} }
-  .cta h2{
-    color:var(--paper);
-    font-size:clamp(1.9rem,3.6vw,2.8rem);
-    font-weight:600;
-    line-height:1.08;
-    margin-bottom:18px;
-    max-width:16ch;
-  }
-  .cta h2 em{font-style:italic; color:var(--ochre);}
-  .cta p{color:#B7BCB3; font-size:1.02rem; max-width:46ch; margin:0 0 30px;}
-  .cta-actions{display:flex; gap:14px; flex-wrap:wrap;}
-  .btn-light{
-    display:inline-flex; align-items:center; gap:10px;
-    padding:15px 28px;
-    background:var(--paper); color:var(--ink);
-    text-decoration:none; font-size:0.95rem; font-weight:600;
-    border:1px solid var(--paper); border-radius:var(--radius);
-    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
-  }
-  .btn-light:hover{transform:translateY(-2px); box-shadow:0 14px 30px -12px rgba(0,0,0,0.5); background:#fff;}
-  .btn-outline{
-    display:inline-flex; align-items:center; gap:10px;
-    padding:15px 26px;
-    background:transparent; color:var(--paper);
-    text-decoration:none; font-size:0.95rem; font-weight:600;
-    border:1px solid rgba(241,238,228,0.30); border-radius:var(--radius);
-    transition:border-color .2s ease, background .2s ease;
-  }
-  .btn-outline:hover{border-color:var(--paper); background:rgba(241,238,228,0.06);}
-
-  .contact-card{
-    background:rgba(241,238,228,0.05);
-    border:1px solid rgba(241,238,228,0.14);
-    border-radius:var(--radius);
-    padding:28px 30px;
-    backdrop-filter:blur(4px);
-  }
-  .contact-card h5{
-    font-family:'Work Sans', sans-serif;
-    font-size:0.78rem; font-weight:600;
-    text-transform:uppercase; letter-spacing:0.14em;
-    color:#8C9A90; margin:0 0 16px;
-  }
-  .contact-line{
-    display:flex; align-items:center; gap:14px;
-    padding:14px 0;
-    border-bottom:1px solid rgba(241,238,228,0.10);
-    text-decoration:none; color:var(--paper);
-    transition:padding-left .2s ease, color .2s ease;
-  }
-  .contact-line:last-child{border-bottom:none;}
-  .contact-line:hover{padding-left:6px; color:var(--ochre);}
-  .contact-line .ico{
-    width:36px; height:36px; border-radius:10px;
-    background:rgba(241,238,228,0.08);
-    display:flex; align-items:center; justify-content:center;
-    flex-shrink:0;
-  }
-  .contact-line .lbl{font-size:0.74rem; color:#8C9A90; display:block; letter-spacing:0.06em; text-transform:uppercase;}
-  .contact-line .val{font-size:0.95rem; font-weight:500;}
-
-  .copyright{
-    padding:22px 0 26px;
-    border-top:1px solid rgba(241,238,228,0.10);
-    display:flex; justify-content:space-between; align-items:center;
-    font-size:0.82rem; color:#8C9A90;
-    flex-wrap:wrap; gap:12px;
-    position:relative; z-index:1;
-  }
-  .copyright .badge{
-    display:inline-flex; align-items:center; gap:8px;
-  }
-  .copyright .badge::before{
-    content:""; width:6px; height:6px; border-radius:50%; background:var(--teal);
-  }
+  .to-top.show{opacity:1; visibility:visible; transform:none;}
+  @media (max-width:640px){ .to-top{right:14px; bottom:14px;} }
 </style>
 </head>
 <body>
 
+<a class="skip" href="#main">Saltar al contenido</a>
+
 <header>
   <div class="wrap">
-    <nav>
-      <a href="#" class="brand" aria-label="Inicio">
-        <span class="brand-dot" aria-hidden="true"></span>
-        Juan Carlos Arcila
+    <nav aria-label="Navegación principal">
+      <a class="brand" href="#main">
+        Juan Carlos Arcila Herrera
+        <small>Diseño instruccional · e-learning</small>
       </a>
-      <div class="navlinks">
+
+      <button class="navtoggle" id="navtoggle" aria-expanded="false" aria-controls="navlinks">
+        <span class="bars" aria-hidden="true"><span></span></span>
+        Menú
+      </button>
+
+      <div class="navlinks" id="navlinks">
         <a href="#lms">Plataformas</a>
+        <a href="#web">Sitios web</a>
         <a href="#interactivos">Interactivos</a>
         <a href="#salud">Salud</a>
         <a href="#rol">Cómo trabajo</a>
@@ -593,59 +336,38 @@
   </div>
 </header>
 
-<section class="hero">
-  <div class="wrap">
-    <div class="eyebrow"><span class="pulse" aria-hidden="true"></span>Diseño instruccional · Producción multimedia · SCORM</div>
-    <h1>Cursos que la gente <em>realmente termina</em>.</h1>
-    <p class="lead">Diseño y produzco experiencias de aprendizaje digital para instituciones militares, educativas y de salud: desde el guion pedagógico hasta el paquete SCORM listo para cargar en el LMS.</p>
+<main id="main">
 
-    <div class="hero-cta">
-      <a class="btn-primary" href="#lms">
-        Ver proyectos
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a class="btn-ghost" href="#contacto">Hablemos</a>
-    </div>
+<section class="hero wrap" aria-labelledby="hero-title">
+  <p class="eyebrow">Diseño instruccional · Producción multimedia · Empaquetado SCORM</p>
+  <h1 id="hero-title">Cursos que la gente realmente termina.</h1>
+  <p class="lead">Diseño y produzco experiencias de aprendizaje digital para instituciones militares, educativas y de salud: desde el guion pedagógico hasta el paquete SCORM listo para cargar en el LMS. También construyo los sitios web donde esas instituciones captan a sus estudiantes.</p>
 
-    <div class="stats">
-      <div class="stat"><b>9</b><span>proyectos en producción</span></div>
-      <div class="stat"><b>2</b><span>países: Colombia y México</span></div>
-      <div class="stat"><b>3</b><span>sectores: defensa, educación, salud</span></div>
-      <div class="stat"><b>10<span class="unit">+</span></b><span>niveles de inglés en un solo curso</span></div>
-    </div>
+  <div class="hero-actions">
+    <a class="btn" href="#lms">Ver proyectos</a>
+    <a class="btn ghost" href="#contacto">Hablemos de tu curso</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>10</b><span>proyectos en producción</span></div>
+    <div class="stat"><b>2</b><span>países: Colombia y México</span></div>
+    <div class="stat"><b>4</b><span>sectores: defensa, educación, salud y formación laboral</span></div>
+    <div class="stat"><b>10+</b><span>niveles de inglés diseñados en un solo curso</span></div>
   </div>
 </section>
 
-<div class="strip" aria-hidden="true">
-  <div class="strip-track">
-    <span class="strip-item t"><span class="dot"></span>Armada Nacional de Colombia</span>
-    <span class="strip-item o"><span class="dot"></span>Fundación Universitaria Católica del Norte</span>
-    <span class="strip-item r"><span class="dot"></span>Centro de Estudios de Veracruz</span>
-    <span class="strip-item t"><span class="dot"></span>Formación clínica · Medellín</span>
-    <span class="strip-item o"><span class="dot"></span>Speak Program · México</span>
-    <span class="strip-item r"><span class="dot"></span>Inglés militar y marítimo</span>
-    <span class="strip-item t"><span class="dot"></span>Armada Nacional de Colombia</span>
-    <span class="strip-item o"><span class="dot"></span>Fundación Universitaria Católica del Norte</span>
-    <span class="strip-item r"><span class="dot"></span>Centro de Estudios de Veracruz</span>
-    <span class="strip-item t"><span class="dot"></span>Formación clínica · Medellín</span>
-    <span class="strip-item o"><span class="dot"></span>Speak Program · México</span>
-    <span class="strip-item r"><span class="dot"></span>Inglés militar y marítimo</span>
-  </div>
-</div>
-
-<section class="section wrap" id="lms">
+<section class="section wrap" id="lms" aria-labelledby="lms-title">
   <div class="section-head">
     <div>
-      <span class="section-num">01 / PLATAFORMAS</span>
-      <h2>Plataformas de aprendizaje completas</h2>
+      <h2 id="lms-title">Plataformas de aprendizaje completas</h2>
       <p>Cursos extensos, estructurados por niveles, con administración de LMS y empaquetado SCORM de principio a fin.</p>
     </div>
-    <span class="tag teal">Experto temático + diseño + SCORM</span>
+    <span class="tag teal">Rol: experto temático + diseño + SCORM</span>
   </div>
 
   <div class="featured">
     <div class="featured-text">
-      <div class="featured-kicker">Proyecto insignia</div>
+      <p class="featured-kicker">Proyecto insignia</p>
       <h3>Inglés para la Armada Nacional de Colombia</h3>
       <p class="featured-desc">Curso completo de inglés para la Armada Nacional: 10 niveles generales más módulos especializados de inglés militar y marítimo, diseñados para formación operativa real.</p>
       <ul class="role-list">
@@ -654,16 +376,18 @@
         <li>Diseñador instruccional de los 10 niveles</li>
         <li>Empaquetador SCORM de la totalidad del curso</li>
       </ul>
-      <a class="btn" href="https://jcraiz.github.io/GUDemo2026/" target="_blank" rel="noopener">
-        Ver demo del curso
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+      <div class="featured-actions">
+        <a class="btn" href="https://jcraiz.github.io/GUDemo2026/" target="_blank" rel="noopener">
+          Ver demo del curso
+          <svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="visually-hidden">(se abre en una pestaña nueva)</span>
+        </a>
+      </div>
     </div>
     <div class="featured-visual">
-      <svg width="160" height="160" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <circle cx="75" cy="75" r="64" stroke="#F1EEE4" stroke-width="2" opacity="0.5"/>
         <path d="M75 20 L75 130 M20 75 L130 75" stroke="#F1EEE4" stroke-width="1.5" opacity="0.4"/>
-        <circle cx="75" cy="75" r="52" stroke="#F1EEE4" stroke-width="1" opacity="0.25" stroke-dasharray="3 6"/>
         <path d="M75 34 L83 70 L75 116 L67 70 Z" fill="#F1EEE4"/>
         <path d="M34 75 L70 67 L116 75 L70 83 Z" fill="#F1EEE4" opacity="0.85"/>
         <circle cx="75" cy="75" r="7" fill="#C98A2B"/>
@@ -671,279 +395,418 @@
     </div>
   </div>
 
-  <div class="grid" style="margin-top:22px;">
-    <div class="card teal">
+  <ul class="grid" style="margin-top:22px;">
+    <li class="card teal">
       <div class="accent-bar"></div>
       <div class="card-icon">
-        <div class="icon-wrap">
-          <svg width="28" height="28" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="6" y="10" width="30" height="22" rx="2" stroke="#1F6F63" stroke-width="2"/>
-            <path d="M6 16 H36" stroke="#1F6F63" stroke-width="2"/>
-            <circle cx="14" cy="24" r="2.5" fill="#C98A2B"/>
-            <path d="M20 22 H30 M20 27 H27" stroke="#1F6F63" stroke-width="2"/>
-          </svg>
-        </div>
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="6" y="10" width="30" height="22" rx="2" stroke="#1F6F63" stroke-width="2"/>
+          <path d="M6 16 H36" stroke="#1F6F63" stroke-width="2"/>
+          <circle cx="14" cy="24" r="2.5" fill="#C98A2B"/>
+          <path d="M20 22 H30 M20 27 H27" stroke="#1F6F63" stroke-width="2"/>
+        </svg>
       </div>
       <div class="card-body">
         <h3>UCN Kids</h3>
-        <p>Curso completo de inglés para niños de la Fundación Universitaria Católica del Norte, con progresión pensada para público infantil.</p>
-        <p class="card-role">Experto temático · Diseño instruccional · SCORM</p>
-        <a class="card-link" href="https://jcraiz.github.io/UCNKidsFL01/" target="_blank" rel="noopener">Ver demo →</a>
+        <p class="desc">Curso completo de inglés para niños de la Fundación Universitaria Católica del Norte, con progresión pensada para público infantil.</p>
+        <p class="card-role">Rol: experto temático, diseño instruccional, empaquetado SCORM.</p>
+        <a class="card-link" href="https://jcraiz.github.io/UCNKidsFL01/" target="_blank" rel="noopener">
+          Ver demo
+          <svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="visually-hidden">de UCN Kids (se abre en una pestaña nueva)</span>
+        </a>
       </div>
-    </div>
+    </li>
 
-    <div class="card teal">
+    <li class="card teal">
       <div class="accent-bar"></div>
       <div class="card-icon">
-        <div class="icon-wrap">
-          <svg width="28" height="28" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="8" y="12" width="26" height="20" rx="2" stroke="#1F6F63" stroke-width="2"/>
-            <path d="M8 18 H34" stroke="#1F6F63" stroke-width="2"/>
-            <path d="M14 25 H24" stroke="#C98A2B" stroke-width="2"/>
-            <circle cx="28" cy="25" r="2" fill="#1F6F63"/>
-          </svg>
-        </div>
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="8" y="12" width="26" height="20" rx="2" stroke="#1F6F63" stroke-width="2"/>
+          <path d="M8 18 H34" stroke="#1F6F63" stroke-width="2"/>
+          <path d="M14 25 H24" stroke="#C98A2B" stroke-width="2"/>
+          <circle cx="28" cy="25" r="2" fill="#1F6F63"/>
+        </svg>
       </div>
       <div class="card-body">
         <h3>Inglés de negocios</h3>
-        <p>Curso completo de inglés de negocios para la Fundación Universitaria Católica del Norte, orientado a comunicación profesional.</p>
-        <p class="card-role">Experto temático · Diseño instruccional · SCORM</p>
-        <a class="card-link" href="https://jcraiz.github.io/BEUCN2025/UCNBE/" target="_blank" rel="noopener">Ver demo →</a>
+        <p class="desc">Curso completo de inglés de negocios para la Fundación Universitaria Católica del Norte, orientado a comunicación profesional.</p>
+        <p class="card-role">Rol: experto temático, diseño instruccional, empaquetado SCORM.</p>
+        <a class="card-link" href="https://jcraiz.github.io/BEUCN2025/UCNBE/" target="_blank" rel="noopener">
+          Ver demo
+          <svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="visually-hidden">de Inglés de negocios (se abre en una pestaña nueva)</span>
+        </a>
       </div>
-    </div>
+    </li>
 
-    <div class="card rose">
+    <li class="card rose">
       <div class="accent-bar"></div>
       <div class="card-icon">
-        <div class="icon-wrap">
-          <svg width="28" height="28" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M21 34 C10 27 6 20 9 14 C11.5 9 18 8 21 13 C24 8 30.5 9 33 14 C36 20 32 27 21 34 Z" stroke="#8B3A3A" stroke-width="2" fill="none"/>
-            <path d="M14 20 H28 M21 13 V27" stroke="#8B3A3A" stroke-width="1.6"/>
-          </svg>
-        </div>
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M21 34 C10 27 6 20 9 14 C11.5 9 18 8 21 13 C24 8 30.5 9 33 14 C36 20 32 27 21 34 Z" stroke="#8B3A3A" stroke-width="2" fill="none"/>
+          <path d="M14 20 H28 M21 13 V27" stroke="#8B3A3A" stroke-width="1.6"/>
+        </svg>
       </div>
       <div class="card-body">
         <h3>Concurso de cultura general religiosa</h3>
-        <p>Actividad motivacional para empleados de la Fundación Universitaria Católica del Norte, con dinámica de concurso.</p>
-        <p class="card-role">Diseño instruccional · Producción multimedia</p>
-        <a class="card-link" href="https://jcraiz.github.io/candelaria/story.html" target="_blank" rel="noopener">Ver demo →</a>
+        <p class="desc">Actividad motivacional para empleados de la Fundación Universitaria Católica del Norte, con dinámica de concurso.</p>
+        <p class="card-role">Rol: diseño instruccional y producción multimedia.</p>
+        <a class="card-link" href="https://jcraiz.github.io/candelaria/story.html" target="_blank" rel="noopener">
+          Ver demo
+          <svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="visually-hidden">del concurso (se abre en una pestaña nueva)</span>
+        </a>
       </div>
-    </div>
-  </div>
+    </li>
+  </ul>
 </section>
 
-<section class="section wrap" id="interactivos">
+<section class="section wrap" id="web" aria-labelledby="web-title">
   <div class="section-head">
     <div>
-      <span class="section-num">02 / INTERACTIVOS</span>
-      <h2>Experiencias interactivas de aprendizaje</h2>
-      <p>Piezas cortas y muy visuales, producidas para el programa Speak del Centro de Estudios de Veracruz (México).</p>
+      <h2 id="web-title">Sitios web institucionales</h2>
+      <p>Diseño y desarrollo de sitios en producción para instituciones educativas: información clara, ruta de matrícula visible y contacto inmediato.</p>
     </div>
-    <span class="tag ochre">Diseño instruccional + producción multimedia</span>
+    <span class="tag slate">Rol: UX/UI + desarrollo front-end + contenido</span>
   </div>
 
-  <div class="grid">
-    <div class="card ochre">
+  <div class="featured slate" style="grid-template-columns:1.1fr 0.9fr;">
+    <div class="featured-text">
+      <p class="featured-kicker" style="color:var(--slate-ink);">Sitio en producción</p>
+      <h3>Politécnico Nafoem — sitio web oficial</h3>
+      <p class="featured-desc">Sitio institucional del Politécnico Nacional de Formación Empresarial (Medellín), institución de educación para el trabajo y el desarrollo humano vigilada por la Secretaría de Educación de Medellín. El objetivo del proyecto era convertir la oferta académica en un recorrido claro: qué se estudia, cuánto dura, cómo se ingresa y con quién hablar.</p>
+      <ul class="role-list">
+        <li>Arquitectura de información y diseño UX/UI</li>
+        <li>Desarrollo front-end responsive (HTML, CSS, JavaScript)</li>
+        <li>Integración con Q10 Académico: preinscripción y campus virtual</li>
+        <li>Embudo de admisión en cuatro pasos y formulario enrutado por dependencia</li>
+        <li>Canal directo de WhatsApp y redacción de contenido institucional y legal</li>
+      </ul>
+      <div class="featured-actions">
+        <a class="btn" href="https://politecniconafoem.edu.co/" target="_blank" rel="noopener">
+          Visitar el sitio
+          <svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="visually-hidden">politecniconafoem.edu.co (se abre en una pestaña nueva)</span>
+        </a>
+        <a class="btn ghost" href="https://nafoem.q10.com/Preinscripcion" target="_blank" rel="noopener">
+          Ver el flujo de preinscripción
+          <svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="visually-hidden">(se abre en una pestaña nueva)</span>
+        </a>
+      </div>
+    </div>
+    <div class="featured-visual" style="background:var(--slate-ink);">
+      <svg width="210" height="150" viewBox="0 0 210 150" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Esquema del sitio web: barra de navegación, portada con video, tarjetas de programas y proceso de admisión.">
+        <rect x="8" y="10" width="194" height="130" rx="4" stroke="#F1EEE4" stroke-width="2" opacity="0.65"/>
+        <path d="M8 28 H202" stroke="#F1EEE4" stroke-width="2" opacity="0.65"/>
+        <circle cx="19" cy="19" r="2.4" fill="#F1EEE4" opacity="0.8"/>
+        <circle cx="28" cy="19" r="2.4" fill="#F1EEE4" opacity="0.5"/>
+        <circle cx="37" cy="19" r="2.4" fill="#F1EEE4" opacity="0.5"/>
+        <rect x="150" y="15" width="44" height="8" rx="4" fill="#C98A2B"/>
+        <rect x="20" y="40" width="94" height="44" rx="3" fill="#F1EEE4" opacity="0.92"/>
+        <path d="M58 54 L72 62 L58 70 Z" fill="#1D3849"/>
+        <rect x="124" y="40" width="66" height="7" rx="3.5" fill="#F1EEE4" opacity="0.85"/>
+        <rect x="124" y="53" width="52" height="7" rx="3.5" fill="#F1EEE4" opacity="0.55"/>
+        <rect x="124" y="70" width="40" height="14" rx="3" fill="#C98A2B"/>
+        <rect x="20" y="96" width="52" height="32" rx="3" stroke="#F1EEE4" stroke-width="1.8" opacity="0.8"/>
+        <rect x="79" y="96" width="52" height="32" rx="3" stroke="#F1EEE4" stroke-width="1.8" opacity="0.8"/>
+        <rect x="138" y="96" width="52" height="32" rx="3" stroke="#F1EEE4" stroke-width="1.8" opacity="0.8"/>
+        <path d="M28 106 H60 M28 114 H52" stroke="#F1EEE4" stroke-width="1.6" opacity="0.6"/>
+        <path d="M87 106 H119 M87 114 H111" stroke="#F1EEE4" stroke-width="1.6" opacity="0.6"/>
+        <path d="M146 106 H178 M146 114 H170" stroke="#F1EEE4" stroke-width="1.6" opacity="0.6"/>
+      </svg>
+    </div>
+  </div>
+
+  <ul class="feature-list">
+    <li>
+      <b>Catálogo de programas navegable</b>
+      <span>Cada técnica laboral abre su perfil ocupacional, requisitos de ingreso y módulos sin sacar al visitante de la página.</span>
+    </li>
+    <li>
+      <b>Admisión en cuatro pasos</b>
+      <span>Formulario, documentos, entrevista y matrícula, explicados como una secuencia para reducir dudas y llamadas repetidas.</span>
+    </li>
+    <li>
+      <b>Contacto que llega a quien debe</b>
+      <span>El formulario enruta el mensaje a coordinación académica, secretaría, mercadeo, rectoría o práctica empresarial.</span>
+    </li>
+    <li>
+      <b>Conversión por WhatsApp</b>
+      <span>Botón permanente con mensaje previo cargado, el canal que realmente usan los aspirantes en Medellín.</span>
+    </li>
+    <li>
+      <b>Puente con el sistema académico</b>
+      <span>Enlaces directos a Q10 Académico para preinscripción en línea y acceso de estudiantes al campus virtual.</span>
+    </li>
+    <li>
+      <b>Cumplimiento y confianza</b>
+      <span>Aviso de vigilancia de la Secretaría de Educación, términos de servicio y política de tratamiento de datos.</span>
+    </li>
+  </ul>
+</section>
+
+<section class="section wrap" id="interactivos" aria-labelledby="int-title">
+  <div class="section-head">
+    <div>
+      <h2 id="int-title">Experiencias interactivas de aprendizaje</h2>
+      <p>Piezas cortas y muy visuales, producidas para el programa Speak del Centro de Estudios de Veracruz (México).</p>
+    </div>
+    <span class="tag ochre">Rol: diseño instruccional + producción multimedia</span>
+  </div>
+
+  <ul class="grid">
+    <li class="card ochre">
       <div class="accent-bar"></div>
       <div class="card-icon">
-        <div class="icon-wrap">
-          <svg width="28" height="28" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M8 10 C14 8 18 9 21 12 V32 C18 29 14 28 8 30 Z" stroke="#C98A2B" stroke-width="2"/>
-            <path d="M34 10 C28 8 24 9 21 12 V32 C24 29 28 28 34 30 Z" stroke="#C98A2B" stroke-width="2"/>
-          </svg>
-        </div>
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M8 10 C14 8 18 9 21 12 V32 C18 29 14 28 8 30 Z" stroke="#C98A2B" stroke-width="2"/>
+          <path d="M34 10 C28 8 24 9 21 12 V32 C24 29 28 28 34 30 Z" stroke="#C98A2B" stroke-width="2"/>
+        </svg>
       </div>
       <div class="card-body">
         <h3>Flipbook — Lecturas interactivas</h3>
-        <p>Libro interactivo con formato flipbook para el programa Speak, pensado para práctica de lectura en inglés.</p>
-        <a class="card-link" href="https://jcraiz.github.io/4storiesspeak/" target="_blank" rel="noopener">Ver demo →</a>
+        <p class="desc">Libro interactivo con formato flipbook para el programa Speak, pensado para práctica de lectura en inglés.</p>
+        <a class="card-link" href="https://jcraiz.github.io/4storiesspeak/" target="_blank" rel="noopener">
+          Ver demo
+          <svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="visually-hidden">del flipbook (se abre en una pestaña nueva)</span>
+        </a>
       </div>
-    </div>
+    </li>
 
-    <div class="card ochre">
+    <li class="card ochre">
       <div class="accent-bar"></div>
       <div class="card-icon">
-        <div class="icon-wrap">
-          <svg width="28" height="28" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="7" y="16" width="28" height="14" rx="6" stroke="#C98A2B" stroke-width="2"/>
-            <circle cx="15" cy="23" r="2.4" fill="#C98A2B"/>
-            <circle cx="27" cy="23" r="2.4" fill="#C98A2B"/>
-          </svg>
-        </div>
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="7" y="16" width="28" height="14" rx="6" stroke="#C98A2B" stroke-width="2"/>
+          <circle cx="15" cy="23" r="2.4" fill="#C98A2B"/>
+          <circle cx="27" cy="23" r="2.4" fill="#C98A2B"/>
+        </svg>
       </div>
       <div class="card-body">
         <h3>Juego de práctica gramatical</h3>
-        <p>Juego para reforzar estructuras gramaticales del inglés, diseñado para el programa Speak.</p>
-        <a class="card-link" href="https://jcraiz.github.io/pruebabird/" target="_blank" rel="noopener">Ver demo →</a>
+        <p class="desc">Juego para reforzar estructuras gramaticales del inglés, diseñado para el programa Speak.</p>
+        <a class="card-link" href="https://jcraiz.github.io/pruebabird/" target="_blank" rel="noopener">
+          Ver demo
+          <svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="visually-hidden">del juego (se abre en una pestaña nueva)</span>
+        </a>
       </div>
-    </div>
+    </li>
 
-    <div class="card ochre">
+    <li class="card ochre">
       <div class="accent-bar"></div>
       <div class="card-icon">
-        <div class="icon-wrap">
-          <svg width="28" height="28" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="10" y="8" width="22" height="26" rx="2" stroke="#C98A2B" stroke-width="2"/>
-            <path d="M14 15 H28 M14 20 H28 M14 25 H22" stroke="#C98A2B" stroke-width="1.6"/>
-          </svg>
-        </div>
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="10" y="8" width="22" height="26" rx="2" stroke="#C98A2B" stroke-width="2"/>
+          <path d="M14 15 H28 M14 20 H28 M14 25 H22" stroke="#C98A2B" stroke-width="1.6"/>
+        </svg>
       </div>
       <div class="card-body">
         <h3>Lectura interactiva</h3>
-        <p>Pieza de lectura interactiva en inglés para el programa Speak, con navegación guiada por el contenido.</p>
-        <a class="card-link" href="https://jcraiz.github.io/su2r1/" target="_blank" rel="noopener">Ver demo →</a>
+        <p class="desc">Pieza de lectura interactiva en inglés para el programa Speak, con navegación guiada por el contenido.</p>
+        <a class="card-link" href="https://jcraiz.github.io/su2r1/" target="_blank" rel="noopener">
+          Ver demo
+          <svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="visually-hidden">de la lectura interactiva (se abre en una pestaña nueva)</span>
+        </a>
       </div>
-    </div>
+    </li>
 
-    <div class="card ochre">
+    <li class="card ochre">
       <div class="accent-bar"></div>
       <div class="card-icon">
-        <div class="icon-wrap">
-          <svg width="28" height="28" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <ellipse cx="21" cy="21" rx="15" ry="8" stroke="#C98A2B" stroke-width="2"/>
-            <ellipse cx="21" cy="21" rx="8" ry="15" stroke="#C98A2B" stroke-width="2"/>
-            <circle cx="21" cy="21" r="2.5" fill="#C98A2B"/>
-          </svg>
-        </div>
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="21" cy="21" rx="15" ry="8" stroke="#C98A2B" stroke-width="2"/>
+          <ellipse cx="21" cy="21" rx="8" ry="15" stroke="#C98A2B" stroke-width="2"/>
+          <circle cx="21" cy="21" r="2.5" fill="#C98A2B"/>
+        </svg>
       </div>
       <div class="card-body">
         <h3>Recorrido 360</h3>
-        <p>Recorrido virtual en 360° por una casa para practicar vocabulario en contexto dentro del programa Speak.</p>
-        <a class="card-link" href="https://jcraiz.github.io/housedemo/" target="_blank" rel="noopener">Ver demo →</a>
+        <p class="desc">Recorrido virtual en 360° por una casa para practicar vocabulario en contexto dentro del programa Speak.</p>
+        <a class="card-link" href="https://jcraiz.github.io/housedemo/" target="_blank" rel="noopener">
+          Ver demo
+          <svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="visually-hidden">del recorrido 360 (se abre en una pestaña nueva)</span>
+        </a>
       </div>
-    </div>
-  </div>
+    </li>
+  </ul>
 </section>
 
-<section class="section wrap" id="salud">
+<section class="section wrap" id="salud" aria-labelledby="salud-title">
   <div class="section-head">
     <div>
-      <span class="section-num">03 / SALUD</span>
-      <h2>Actualización profesional en salud</h2>
+      <h2 id="salud-title">Actualización profesional en salud</h2>
       <p>Formación continua para personal médico, con foco en claridad clínica y facilidad de consulta.</p>
     </div>
-    <span class="tag rose">Diseño instruccional + producción multimedia</span>
+    <span class="tag rose">Rol: diseño instruccional + producción multimedia</span>
   </div>
 
-  <div class="featured" style="grid-template-columns:0.9fr 1.1fr;">
+  <div class="featured rose" style="grid-template-columns:0.9fr 1.1fr;">
     <div class="featured-visual" style="background:var(--rose-ink);">
-      <svg width="140" height="140" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect x="48" y="20" width="24" height="80" rx="4" fill="#F1EEE4"/>
         <rect x="20" y="48" width="80" height="24" rx="4" fill="#F1EEE4"/>
       </svg>
     </div>
     <div class="featured-text">
-      <div class="featured-kicker" style="color:var(--rose-ink); background:rgba(139,58,58,0.10);">Formación clínica</div>
+      <p class="featured-kicker" style="color:var(--rose-ink);">Formación clínica</p>
       <h3>Atención primaria en salud</h3>
       <p class="featured-desc">Módulo de actualización dirigido a médicos y enfermeras en Medellín, con contenido clínico traducido a una experiencia digital clara y navegable.</p>
       <ul class="role-list">
         <li>Diseño instruccional del módulo</li>
         <li>Producción multimedia</li>
       </ul>
-      <a class="btn" href="https://jcraiz.github.io/udea26aps/" target="_blank" rel="noopener">
-        Ver demo del módulo
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+      <div class="featured-actions">
+        <a class="btn" href="https://jcraiz.github.io/udea26aps/" target="_blank" rel="noopener">
+          Ver demo del módulo
+          <svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span class="visually-hidden">(se abre en una pestaña nueva)</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="skills-wrap" id="rol">
+<section class="skills-wrap" id="rol" aria-labelledby="rol-title">
   <div class="wrap">
-    <h2>Cómo trabajo</h2>
-    <p class="lead2">En cada proyecto cubro el proceso completo: desde entender el contenido como experto temático, hasta entregar el curso funcionando en el LMS del cliente.</p>
-
-    <div class="pill-grid">
-      <span class="pill">Diseño instruccional</span>
-      <span class="pill">Experto temático en inglés</span>
-      <span class="pill">Empaquetado SCORM</span>
-      <span class="pill">Administración de LMS</span>
-      <span class="pill">Producción multimedia</span>
-      <span class="pill">Guion pedagógico</span>
-      <span class="pill">Gamificación educativa</span>
-      <span class="pill">Contenido para sectores regulados</span>
-    </div>
-
-    <div class="process">
-      <div class="step">
-        <span class="num">01</span>
-        <h4>Entender el contenido</h4>
-        <p>Me involucro como experto temático y traduzco los objetivos de aprendizaje en una estructura pedagógica clara.</p>
-      </div>
-      <div class="step">
-        <span class="num">02</span>
-        <h4>Diseñar la experiencia</h4>
-        <p>Defino guion, actividades, evaluaciones y flujo de navegación pensando en cómo aprende la persona.</p>
-      </div>
-      <div class="step">
-        <span class="num">03</span>
-        <h4>Producir</h4>
-        <p>Genero piezas multimedia, interactivos y recursos visuales que sostienen la atención y refuerzan el contenido.</p>
-      </div>
-      <div class="step">
-        <span class="num">04</span>
-        <h4>Empaquetar y publicar</h4>
-        <p>Entrego el curso en SCORM listo para cargar en tu LMS, con seguimiento y administración incluidos.</p>
-      </div>
-    </div>
+    <h2 id="rol-title">Cómo trabajo</h2>
+    <p class="lead2">En cada proyecto cubro el proceso completo: desde entender el contenido como experto temático, hasta entregar el curso funcionando en el LMS del cliente o el sitio publicado en su dominio.</p>
+    <ul class="pill-grid">
+      <li class="pill">Diseño instruccional</li>
+      <li class="pill">Experto temático en inglés</li>
+      <li class="pill">Empaquetado SCORM</li>
+      <li class="pill">Administración de LMS</li>
+      <li class="pill">Producción multimedia</li>
+      <li class="pill">Guion pedagógico</li>
+      <li class="pill">Gamificación educativa</li>
+      <li class="pill">Diseño UX/UI y desarrollo web</li>
+      <li class="pill">Contenido para sectores regulados (defensa, salud)</li>
+    </ul>
   </div>
 </section>
+
+</main>
 
 <footer id="contacto">
   <div class="wrap">
-    <div class="cta">
-      <div class="cta-grid">
-        <div>
-          <h2>¿Construimos tu <em>próximo curso</em>?</h2>
-          <p>Cuéntame el contenido y el LMS que usas, y lo llevamos de guion a paquete SCORM listo para publicar.</p>
-          <div class="cta-actions">
-            <a class="btn-light" href="mailto:jcraiz@gmail.com">
-              Escríbeme
-              <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a class="btn-outline" href="tel:+573022553699">Llamar ahora</a>
-          </div>
-        </div>
-
-        <div class="contact-card">
-          <h5>Contacto directo</h5>
-          <a class="contact-line" href="mailto:jcraiz@gmail.com">
-            <span class="ico" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.8"/></svg>
-            </span>
-            <span>
-              <span class="lbl">Correo</span>
-              <span class="val">jcraiz@gmail.com</span>
-            </span>
-          </a>
-          <a class="contact-line" href="tel:+573022553699">
-            <span class="ico" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-            </span>
-            <span>
-              <span class="lbl">Teléfono</span>
-              <span class="val">+57 302 255 3699</span>
-            </span>
-          </a>
-          <div class="contact-line" style="cursor:default;">
-            <span class="ico" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>
-            </span>
-            <span>
-              <span class="lbl">Ubicación</span>
-              <span class="val">Colombia · México (remoto)</span>
-            </span>
-          </div>
-        </div>
+    <div class="foot-grid">
+      <div>
+        <h2>¿Construimos tu próximo curso o tu sitio?</h2>
+        <p>Cuéntame el contenido y el LMS que usas, y lo llevamos de guion a paquete SCORM listo para publicar. Si lo que necesitas es el sitio web de tu institución, también lo diseño y lo desarrollo.</p>
+      </div>
+      <div class="foot-links">
+        <a href="mailto:jcraiz@gmail.com">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="m2 4.5 6 4 6-4" stroke="currentColor" stroke-width="1.4"/></svg>
+          jcraiz@gmail.com
+        </a>
+        <a href="tel:+573022553699">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 2.5h2.5l1 3-1.6 1.2a8.5 8.5 0 0 0 3.9 3.9L10 9l3 1v2.5a1 1 0 0 1-1.1 1C6.6 13 3 9.4 2 3.6A1 1 0 0 1 3 2.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          +57 302 255 3699
+        </a>
+        <a href="https://wa.me/573022553699" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.8a6.2 6.2 0 0 0-5.3 9.4L2 14.2l3.1-.8A6.2 6.2 0 1 0 8 1.8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M5.8 5.6c.3-.1.6 0 .7.3l.4.9-.5.5c.4.8 1 1.4 1.8 1.8l.5-.5.9.4c.3.1.4.4.3.7-.2.5-.7.8-1.2.7A5 5 0 0 1 5.1 6.8c-.1-.5.2-1 .7-1.2Z" fill="currentColor"/></svg>
+          Escríbeme por WhatsApp
+          <span class="visually-hidden">(se abre en una pestaña nueva)</span>
+        </a>
       </div>
     </div>
-
-    <div class="copyright">
-      <span>© Juan Carlos Arcila Herrera · Diseño instruccional</span>
-      <span class="badge">Disponible para nuevos proyectos</span>
-    </div>
+    <p class="copyright">Juan Carlos Arcila Herrera · Diseño instruccional y e-learning · Colombia / México</p>
   </div>
 </footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="Volver al inicio de la página">
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 14V4m0 0L4.5 8.5M9 4l4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+(function(){
+  // --- Mobile menu ---
+  var toggle = document.getElementById('navtoggle');
+  var panel  = document.getElementById('navlinks');
+
+  function closeMenu(){
+    panel.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+  }
+
+  toggle.addEventListener('click', function(){
+    var open = panel.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  panel.addEventListener('click', function(e){
+    if (e.target.closest('a')) closeMenu();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && panel.classList.contains('open')){
+      closeMenu();
+      toggle.focus();
+    }
+  });
+
+  document.addEventListener('click', function(e){
+    if (!panel.classList.contains('open')) return;
+    if (!e.target.closest('nav')) closeMenu();
+  });
+
+  window.addEventListener('resize', function(){
+    if (window.innerWidth > 860) closeMenu();
+  });
+
+  // --- Active section in nav ---
+  var links = Array.prototype.slice.call(panel.querySelectorAll('a[href^="#"]'));
+  var sections = links
+    .map(function(a){ return document.querySelector(a.getAttribute('href')); })
+    .filter(Boolean);
+
+  function setCurrent(id){
+    links.forEach(function(a){
+      if (a.getAttribute('href') === '#' + id) a.setAttribute('aria-current','true');
+      else a.removeAttribute('aria-current');
+    });
+  }
+
+  if ('IntersectionObserver' in window && sections.length){
+    var visible = {};
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ visible[en.target.id] = en.isIntersecting; });
+      for (var i = sections.length - 1; i >= 0; i--){
+        if (visible[sections[i].id]){ setCurrent(sections[i].id); return; }
+      }
+      setCurrent('');
+    }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+    sections.forEach(function(s){ io.observe(s); });
+  }
+
+  // --- Back to top ---
+  var toTop = document.getElementById('toTop');
+  var ticking = false;
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function(){
+      toTop.classList.toggle('show', window.scrollY > 700);
+      ticking = false;
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  toTop.addEventListener('click', function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top:0, behavior: reduce ? 'auto' : 'smooth' });
+    document.querySelector('.brand').focus({ preventScroll:true });
+  });
+})();
+</script>
 
 </body>
 </html>
